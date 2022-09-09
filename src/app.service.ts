@@ -6,11 +6,9 @@ const sqlite3 = require("sqlite3").verbose();
 
 
 //Please Enter Your Credentials Here
-// let CLIENT_ID = "<Client Id>";
-// let CLIENT_SECRET = "<Client Secret>";
+let CLIENT_ID = "<Client Id>";
+let CLIENT_SECRET = "<Client Secret>";
 
-let CLIENT_ID =   "a5ea7bfac39d7f060164";
-let CLIENT_SECRET = "c6aeeafa4baa392572ce22a5d46835a58dbf60d0"
 
 //connecting to sql database
 const db = new sqlite3.Database('./files.db', sqlite3.OPEN_READWRITE, (err) => {
