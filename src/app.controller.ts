@@ -10,12 +10,17 @@ export class AppController {
   async root() {
     return {}
   }
-
   // making route for "/api/auth/github" where we will recieve the code as query
   @Get("/api/auth/github")
-  start_code(@Query() query: { code: string,path:string }): string{
+  async start_code(@Query() query: { code: string,path:string }): Promise<string> {
     const code = query.code;
-    this.appService.create_repo(code)
-    return "Repository And Files Were Succesfully Added"
+      let data=await this.appService.create_repo(code).then(data=>{
+        return "Repository And Files Succesfully Created!"
+      })
+      .catch(error=>{
+        return "Error in Creating Repository, Maybe There is already an repository existing with that name"
+      })
+      return data;
+      // return "Repository And Files Were Succesfully Added"
 }
 }
